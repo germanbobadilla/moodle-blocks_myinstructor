@@ -1,0 +1,82 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_myinstructor/content
+
+    Displays the configured instructor: picture, name, group(s) and a message button.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * picturehtml string - Rendered user picture HTML.
+    * fullname string - The instructor's full name.
+    * profileurl string - URL of the instructor's profile page.
+    * hasdescription bool - Whether a description was provided.
+    * description string - The instructor's description, already formatted as safe HTML.
+    * hasmessage bool - Whether the "Send message" button should be shown.
+    * messageurl string - URL that opens a conversation with the instructor.
+    * messagelabel string - Label for the "Send message" button.
+    * hasgroups bool - Whether group information should be shown.
+    * grouplabel string - Localised "Group" or "Groups" label.
+    * groups array - The instructor's groups.
+    * groups[].name string - A group name.
+
+    Example context (json):
+    {
+        "picturehtml": "<img class='userpicture' src='https://example.com/pix/u/f1.png' alt=''>",
+        "fullname": "Teacher One",
+        "profileurl": "https://example.com/user/view.php?id=2&amp;course=4",
+        "hasdescription": true,
+        "description": "Office hours: Mon &amp; Wed, 3-5pm.<br />I reply to messages within one working day.",
+        "hasmessage": true,
+        "messageurl": "https://example.com/message/index.php?id=2",
+        "messagelabel": "Send message",
+        "hasgroups": true,
+        "grouplabel": "Group",
+        "groups": [ { "name": "Group A" } ]
+    }
+}}
+<div class="block-myinstructor">
+    <div class="block-myinstructor-person">
+        <div class="block-myinstructor-avatar">
+            {{{picturehtml}}}
+        </div>
+        <div class="block-myinstructor-meta">
+            <a href="{{profileurl}}" class="block-myinstructor-name">{{fullname}}</a>
+            {{#hasgroups}}
+                <div class="block-myinstructor-groups">
+                    <span class="block-myinstructor-groups-label">{{grouplabel}}:</span>
+                    {{#groups}}
+                        <span class="block-myinstructor-group">{{name}}</span>
+                    {{/groups}}
+                </div>
+            {{/hasgroups}}
+        </div>
+    </div>
+    {{#hasdescription}}
+        <div class="block-myinstructor-description">{{{description}}}</div>
+    {{/hasdescription}}
+    {{#hasmessage}}
+        <div class="block-myinstructor-actions">
+            <a href="{{messageurl}}" class="btn btn-primary btn-sm">{{messagelabel}}</a>
+        </div>
+    {{/hasmessage}}
+</div>
