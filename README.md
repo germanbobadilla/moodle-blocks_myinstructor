@@ -42,7 +42,7 @@ Install the plugin like any other Moodle block plugin, in `blocks/myinstructor`
 (`public/blocks/myinstructor` on Moodle 5.1 and later):
 
 ```sh
-git clone https://github.com/germanbobadilla/moodle-blocks_myinstructor.git blocks/myinstructor
+git clone https://github.com/germanbobadilla/moodle-block_myinstructor.git blocks/myinstructor
 ```
 
 Then log in as an admin and visit *Site administration > Notifications* to
@@ -84,7 +84,7 @@ actions menu and choose *Configure My instructor block*:
 
 ## Support
 
-Please use the [GitHub issue tracker](https://github.com/germanbobadilla/moodle-blocks_myinstructor/issues)
+Please use the [GitHub issue tracker](https://github.com/germanbobadilla/moodle-block_myinstructor/issues)
 to report bugs or request features.
 
 ## License
