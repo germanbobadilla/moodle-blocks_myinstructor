@@ -25,7 +25,6 @@ namespace block_myinstructor;
  * @coversDefaultClass \block_myinstructor\visibility
  */
 final class visibility_test extends \advanced_testcase {
-
     /**
      * Create a course with a group and an instructor who belongs to that group.
      *

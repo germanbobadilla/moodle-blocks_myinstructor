@@ -25,7 +25,6 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ($ADMIN->fulltree) {
-
     $roles = role_fix_names(get_all_roles(), null, ROLENAME_ORIGINAL);
     $roleoptions = [];
     foreach ($roles as $role) {

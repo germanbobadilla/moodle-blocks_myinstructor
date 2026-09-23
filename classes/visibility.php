@@ -24,7 +24,6 @@ namespace block_myinstructor;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class visibility {
-
     /**
      * Whether the viewer may see the instructor block for a given instructor in a course.
      *
@@ -37,8 +36,12 @@ class visibility {
      * @param \context_course $coursecontext The course context, passed in to avoid a repeated lookup.
      * @return bool True when the block should be shown to the viewer.
      */
-    public static function can_view(int $courseid, int $viewerid, int $instructorid,
-            \context_course $coursecontext): bool {
+    public static function can_view(
+        int $courseid,
+        int $viewerid,
+        int $instructorid,
+        \context_course $coursecontext
+    ): bool {
 
         if (has_capability('block/myinstructor:viewall', $coursecontext, $viewerid)) {
             return true;

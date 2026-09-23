@@ -32,7 +32,6 @@ use block_myinstructor\visibility;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_myinstructor extends block_base {
-
     /** @var int Maximum number of words allowed in the per-instance description. */
     const MAX_DESCRIPTION_WORDS = 100;
 
@@ -147,8 +146,10 @@ class block_myinstructor extends block_base {
         }
 
         // Enforce the group visibility rule for everyone who is not staff and is not editing.
-        if (!$isstaff && !$editing
-                && !visibility::can_view($courseid, (int) $USER->id, $instructorid, $coursecontext)) {
+        if (
+            !$isstaff && !$editing
+                && !visibility::can_view($courseid, (int) $USER->id, $instructorid, $coursecontext)
+        ) {
             return $this->content;
         }
 

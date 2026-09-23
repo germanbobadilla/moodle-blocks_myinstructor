@@ -30,7 +30,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_myinstructor_edit_form extends block_edit_form {
-
     /**
      * Add the block specific settings to the configuration form.
      *
@@ -47,21 +46,35 @@ class block_myinstructor_edit_form extends block_edit_form {
         $options = $this->get_instructor_options();
         $options = ['' => get_string('choosedots')] + $options;
 
-        $mform->addElement('select', 'config_instructor',
-            get_string('configinstructor', 'block_myinstructor'), $options);
+        $mform->addElement(
+            'select',
+            'config_instructor',
+            get_string('configinstructor', 'block_myinstructor'),
+            $options
+        );
         $mform->addHelpButton('config_instructor', 'configinstructor', 'block_myinstructor');
 
-        $mform->addElement('textarea', 'config_description',
-            get_string('configdescription', 'block_myinstructor'), ['rows' => 4, 'cols' => 40]);
+        $mform->addElement(
+            'textarea',
+            'config_description',
+            get_string('configdescription', 'block_myinstructor'),
+            ['rows' => 4, 'cols' => 40]
+        );
         $mform->setType('config_description', PARAM_TEXT);
         $mform->addHelpButton('config_description', 'configdescription', 'block_myinstructor');
 
-        $mform->addElement('advcheckbox', 'config_showmessage',
-            get_string('configshowmessage', 'block_myinstructor'));
+        $mform->addElement(
+            'advcheckbox',
+            'config_showmessage',
+            get_string('configshowmessage', 'block_myinstructor')
+        );
         $mform->setDefault('config_showmessage', 1);
 
-        $mform->addElement('advcheckbox', 'config_showgroups',
-            get_string('configshowgroups', 'block_myinstructor'));
+        $mform->addElement(
+            'advcheckbox',
+            'config_showgroups',
+            get_string('configshowgroups', 'block_myinstructor')
+        );
         $mform->setDefault('config_showgroups', 1);
     }
 
@@ -83,8 +96,11 @@ class block_myinstructor_edit_form extends block_edit_form {
         if ($description !== '') {
             $words = preg_split('/\s+/u', $description, -1, PREG_SPLIT_NO_EMPTY);
             if (count($words) > block_myinstructor::MAX_DESCRIPTION_WORDS) {
-                $errors['config_description'] = get_string('descriptiontoolong', 'block_myinstructor',
-                    block_myinstructor::MAX_DESCRIPTION_WORDS);
+                $errors['config_description'] = get_string(
+                    'descriptiontoolong',
+                    'block_myinstructor',
+                    block_myinstructor::MAX_DESCRIPTION_WORDS
+                );
             }
         }
 
