@@ -127,7 +127,11 @@ class block_myinstructor_edit_form extends block_edit_form {
         $roleids = $this->get_instructor_role_ids();
         $users = [];
         if (!empty($roleids)) {
-            $users = get_role_users($roleids, $coursecontext);
+            // Moodle's get_role_users() requires ra.id in $fields to uniquely key
+            // each row whenever $roleid is an array (as it always is here) rather
+            // than a single id; otherwise it raises a developer debugging message
+            // that Behat's strict debugging setting turns into a hard failure.
+            $users = get_role_users($roleids, $coursecontext, false, 'ra.id, u.*');
         }
         if (empty($users)) {
             $users = get_enrolled_users($coursecontext, '', 0, 'u.*', null, 0, 0, true);
